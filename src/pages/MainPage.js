@@ -1,4 +1,5 @@
 import api from "../api";
+import BoardListCard from "../templates/BoardListCard";
 import PostCard from "../templates/PostCard";
 import { useState, useEffect } from "react";
 
@@ -74,23 +75,7 @@ function MainPage() {
                     </div>
                     </div>
                 </div>
-                <div id="boards">
-                    <div className="card">
-                    <span className="cardHeader">
-                        <span className="yellow cardBullet" />
-                        <p className="cardName">Boards list</p>
-                    </span>
-                    <div className="boardsList cardContent">
-                        <div className="boardsListCategory">
-                        <p className="" />
-                        </div>
-                        {/* <a href="/" class="boardTagSlashed">
-                                                        <span class="boardTagSlashed">//</span>
-                                                        <span>— </span>
-                                                    </a> */}
-                    </div>
-                    </div>
-                </div>
+                <BoardListCard/>
                 </div>
                 <div className="rightContent">
                 <div className="card" style={{ marginRight: 0, flexGrow: 1 }}>
