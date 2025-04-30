@@ -1,4 +1,24 @@
+import api from "../api";
+import PostCard from "../templates/PostCard";
+import { useState, useEffect } from "react";
+
 function MainPage() {
+
+    const [posts, setPosts] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await api.get('/boards/latest');
+          setPosts(response.data); // Сохраняем данные в состояние
+        } catch (error) {
+          console.error('Ошибка:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
     return (
         <div className="pageContent">
             <header className="mainPageHeading">
@@ -79,7 +99,14 @@ function MainPage() {
                     <p className="cardName">Latest posts</p>
                     </span>
                     <div className="cardContent">
-                    <div className="postContainer"></div>
+                    <div className="postContainer">
+                        {posts.map((post) => (
+                            <PostCard 
+                                key={post.id} 
+                                data={post} 
+                            />
+                        ))}
+                    </div>
                     </div>
                 </div>
                 </div>
