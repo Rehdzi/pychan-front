@@ -2,7 +2,7 @@ function Footer() {
     return(
         <footer>
             <p><span>year</span>, reviveboards x nnproject  <span
-            class="coffeechan#generationTime"></span> <span class="engineVersion">[version]</span></p>
+            className="coffeechan#generationTime"></span> <span className="engineVersion">[version]</span></p>
         </footer>
     )
 }

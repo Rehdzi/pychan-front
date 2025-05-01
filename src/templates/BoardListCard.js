@@ -1,15 +1,16 @@
 import api from "../api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
+import { Link } from "react-router-dom";
 
 function BoardEntries({data}) {
     const boardEntries = data.map(category =>
             <div className="boardsListCategory" key={category.id}>
                 <p className="">{category.name}</p>
                 {category.boards.map(entry =>
-                <a key={entry.id} href={`/${entry.tag}`} class="boardTagSlashed">
-                    <span class="boardTagSlashed">/{entry.tag}/ </span>
+                <Link key={entry.id} href={`/${entry.tag}`} className="boardTagSlashed">
+                    <span className="boardTagSlashed">/{entry.tag}/ </span>
                     <span>{entry.name}—{entry.description}</span>
-                </a>
+                </Link>
                 )}
             </div>
     )
@@ -20,7 +21,7 @@ function BoardEntries({data}) {
     )
 }
 
-export default function BoardListCard() {
+function BoardListCard() {
     const [boardlist, setBoardlist] = useState([]);
   
     useEffect(() => {
@@ -56,3 +57,5 @@ export default function BoardListCard() {
         </div>
     )
 }
+
+export default memo(BoardListCard);

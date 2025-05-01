@@ -534,6 +534,7 @@ a:visited {
 
 .postContainer {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-content: start;
     justify-content: flex-start;
