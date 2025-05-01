@@ -46,7 +46,7 @@ export default function BoardPage() {
     }
 
     return(
-        <div>
+        <div className='pageContent'>
         <header className="mainPageHeading">
             <div className="naming">
                 

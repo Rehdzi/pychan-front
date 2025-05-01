@@ -7,7 +7,7 @@ function BoardEntries({data}) {
             <div className="boardsListCategory" key={category.id}>
                 <p className="">{category.name}</p>
                 {category.boards.map(entry =>
-                <Link key={entry.id} href={`/${entry.tag}`} className="boardTagSlashed">
+                <Link key={entry.id} to={`/${entry.tag}`} className="boardTagSlashed">
                     <span className="boardTagSlashed">/{entry.tag}/ </span>
                     <span>{entry.name}—{entry.description}</span>
                 </Link>
@@ -58,4 +58,4 @@ function BoardListCard() {
     )
 }
 
-export default memo(BoardListCard);
+export default BoardListCard;
