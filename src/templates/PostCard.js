@@ -14,7 +14,7 @@ function Reply({data}) {
 // Дочерний компонент PostCard.jsx
 const PostCard = ({ data }) => {
     return (
-      <div className="postCard">
+      <div key={data.id} className="postCard">
         <div className="cardContent postContent">
           <div className="postImages">
             <img src={data.image_url} alt="Post picture" />

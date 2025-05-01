@@ -2,11 +2,16 @@ import api from "../api";
 import { useState, useEffect } from "react";
 
 function BoardEntries({data}) {
-    const boardEntries = data.map(entry =>
-        <a href={`/${entry.tag}`} class="boardTagSlashed">
-            <span class="boardTagSlashed">/{entry.tag}/ </span>
-            <span>{entry.name}—{entry.description}</span>
-        </a>
+    const boardEntries = data.map(category =>
+            <div className="boardsListCategory" key={category.id}>
+                <p className="">{category.name}</p>
+                {category.boards.map(entry =>
+                <a key={entry.id} href={`/${entry.tag}`} class="boardTagSlashed">
+                    <span class="boardTagSlashed">/{entry.tag}/ </span>
+                    <span>{entry.name}—{entry.description}</span>
+                </a>
+                )}
+            </div>
     )
     return(
         <>
@@ -16,19 +21,19 @@ function BoardEntries({data}) {
 }
 
 export default function BoardListCard() {
-    const [boards, setBoards] = useState([]);
+    const [boardlist, setBoardlist] = useState([]);
   
     useEffect(() => {
-      const fetchData = async () => {
+      const fetchBoardlist = async () => {
         try {
-          const response = await api.get('/boards');
-          setBoards(response.data); // Сохраняем данные в состояние
+          const response = await api.get('/boardlist');
+          setBoardlist(response.data); // Сохраняем данные в состояние
         } catch (error) {
           console.error('Ошибка:', error);
         }
       };
   
-      fetchData();
+      fetchBoardlist();
     }, []);
 
     return(
@@ -39,11 +44,9 @@ export default function BoardListCard() {
                 <p className="cardName">Boards list</p>
                 </span>
                 <div className="boardsList cardContent">
-                    <div className="boardsListCategory">
-                        <p className="" />
-                    </div>
+                    
 
-                    <BoardEntries data={boards}/>
+                    <BoardEntries data={boardlist}/>
                         {/* <a href="/" class="boardTagSlashed">
                                                         <span class="boardTagSlashed">//</span>
                                                         <span>— </span>
