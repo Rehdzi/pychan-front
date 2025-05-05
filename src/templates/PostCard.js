@@ -1,3 +1,5 @@
+import Markdown from "react-markdown";
+
 function Reply({data}) {
     const replyIds = data.child_ids.map(reply =>
         <a key={reply}>{'>>' + reply + '  '}</a>
@@ -24,7 +26,7 @@ const PostCard = ({ data }) => {
               <p>{data.title}</p>
             </div>
             <div className="postMessage">
-              <p>{data.text_}</p>
+              <Markdown>{data.text_}</Markdown>
             </div>
             <div className="postReplies">
               <div className="postReplyID">

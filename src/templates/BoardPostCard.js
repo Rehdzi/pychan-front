@@ -10,6 +10,7 @@
             
 //         )
 // }
+import Markdown from "react-markdown";
 
 // Дочерний компонент PostCard.jsx
 const BoardPostCard = ({ data }) => {
@@ -26,7 +27,7 @@ const BoardPostCard = ({ data }) => {
               <p>{data.title}</p>
             </div>
             <div className="postMessage">
-              <p>{data.text}</p>
+              <Markdown>{data.text}</Markdown>
             </div>
             <div className="postReplies">
               {/* <div className="postReplyID">

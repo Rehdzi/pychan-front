@@ -1,3 +1,5 @@
+import Markdown from "react-markdown"
+
 export default function ThreadReply({data}) {
     return(
         <div className="postReply">
@@ -15,7 +17,9 @@ export default function ThreadReply({data}) {
                     </div>
                     <div className="postTitle"></div>
                     <div className="postMessage">
-                        {data.text}
+                        <Markdown>
+                            {data.text}
+                        </Markdown>
                     </div>
                     <div className="postReplies">
                     <div className="postReplyID"></div>

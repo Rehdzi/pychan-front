@@ -40,8 +40,14 @@ export default function ThreadContainer(){
             {data.threads.map((thread, index) =>(
                 <div className="thread" key={thread.op.id}>
                     <BoardPostCard data={thread.op}/>
-                    <ThreadReply data={thread.first_reply}/>
-                    <ThreadReply data={thread.last_reply}/>
+                    {thread.first_reply &&
+                        <ThreadReply data={thread.first_reply}/>
+                    }
+                    {thread.last_reply && 
+                        thread.last_reply.id !== thread.first_reply?.id 
+                        &&
+                        <ThreadReply data={thread.last_reply}/>
+                    }
                 </div>
                 
             ))}
