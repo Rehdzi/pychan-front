@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import ThreadContainer from '../templates/ThreadContainer';
+import PostForm from '../templates/PostForm';
 
 export default function BoardPage() {
     const { tag } = useParams();
@@ -58,28 +59,7 @@ export default function BoardPage() {
 
         <div className="panels">
             <div className="boardLeftContent">
-                <div className="card postForm">
-                        <span className="cardHeader">
-                            <span className="red cardBullet"></span>
-                            <p className="cardName">Post form</p>
-                        </span>
-                    <form method="post" className="postFormHandler">
-                        <div className="typing">
-                            
-
-                            <div className="functional">
-                                <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)"/>
-                                <button type="submit">Check</button>
-                            </div>
-                        </div>
-                        <div className="posting">
-                            <input type="file" name="postAttach" id="pA"/>
-                            <progress value="10" max="100" className="postingProgress">10%</progress>
-                            
-                        </div>
-                    </form>
-                </div>
-
+                <PostForm/>
                 <div className="postContainer">
                     <ThreadContainer/>
                 </div>
