@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import api from '../api';
+import ThreadContainer from '../templates/ThreadContainer';
 
 export default function BoardPage() {
     const { tag } = useParams();
@@ -22,7 +22,7 @@ export default function BoardPage() {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                const response = await axios.get(`http://127.0.0.1:8000/${tag}`, { 
+                const response = await api.get(`/${tag}`, { 
                     signal: controller.signal 
                 });
                 setBoard(response.data);
@@ -81,90 +81,7 @@ export default function BoardPage() {
                 </div>
 
                 <div className="postContainer">
-                    
-                        <div className="postWithReplies">
-                            <div className="postCard">
-                                <div className="cardContent postContent">
-                                    <div className="postImages">
-                                        <img src="/static/girl.jpg" alt="Post picture"/>
-                                    </div>
-                                    <div className="postTextContent">
-
-                                        <div className="postMenu">
-                                            <div>
-                                                <a href="/" className="postID cardNavigate"></a>
-                                            </div>
-                                        </div>
-
-                                        <div className="postTitle">
-                                            
-                                        </div>
-
-                                        <div className="postMessage">
-                                            
-                                        </div>
-                                        <div className="postReplies">
-                                            <div className="postReplyID">
-                                                
-                                            </div>
-                                            <div className="postReplyID">
-                                                
-                                            </div>
-                                            <div className="postReplyID">
-                                                
-                                            </div>
-                                            <div className="postReplyID">
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                                    <div className="postReply">
-                                        <span className="threadStrip"></span>
-                                        <div className="postCard postReply">
-                                            <div className="cardContent postContent">
-                                                <div className="postImages">
-                                                    <img src="/static/girl.jpg" alt="Post picture"/>
-                                                </div>
-                                                <div className="postTextContent">
-
-                                                    <div className="postMenu">
-                                                        <div className="postID cardNavigate">
-                                                            <a></a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="postTitle">
-                                                        
-                                                    </div>
-
-                                                    <div className="postMessage">
-                                                        
-                                                    </div>
-                                                    <div className="postReplies">
-                                                        <div className="postReplyID">
-                                                            
-                                                        </div>
-                                                        <div className="postReplyID">
-                                                            
-                                                        </div>
-                                                        <div className="postReplyID">
-                                                            
-                                                        </div>
-                                                        <div className="postReplyID">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                
-                        </div>
-
-                    
+                    <ThreadContainer/>
                 </div>
             </div>
             <div className="boardRightContent">

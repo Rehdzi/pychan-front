@@ -45,13 +45,7 @@ function BoardListCard() {
                 <p className="cardName">Boards list</p>
                 </span>
                 <div className="boardsList cardContent">
-                    
-
                     <BoardEntries data={boardlist}/>
-                        {/* <a href="/" class="boardTagSlashed">
-                                                        <span class="boardTagSlashed">//</span>
-                                                        <span>— </span>
-                                                    </a> */}
                 </div>
             </div>
         </div>
