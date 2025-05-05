@@ -44,7 +44,7 @@ export default function ThreadContainer(){
                     <ThreadReply data={thread.last_reply}/>
                 </div>
                 
-            ))};
+            ))}
         
         </div>
 

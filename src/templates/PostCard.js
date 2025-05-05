@@ -1,6 +1,6 @@
 function Reply({data}) {
     const replyIds = data.child_ids.map(reply =>
-        <a>{'>>' + reply + '  '}</a>
+        <a key={reply}>{'>>' + reply + '  '}</a>
     )
     if (data.child_ids != [])
         return(
