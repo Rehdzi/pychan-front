@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MDXEditor, UndoRedo, BoldItalicUnderlineToggles, quotePlugin, markdownShortcutPlugin, toolbarPlugin } from '@mdxeditor/editor'
 import '@mdxeditor/editor/style.css'
 import '../editor.css'
+import api from '../api';
 
 export default function PostForm() {
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -19,14 +20,22 @@ export default function PostForm() {
         setError(null);
 
         try {
-            const response = await api.post('/api/posts/create-thread', {
+            const response = await api.post('/new_thread/', {
                 board_tag: tag,
                 title: title.trim(),
                 text: text.trim(),
-                image_ids: [] // Замените на реальные ID изображений после реализации загрузки
-            });
+                image_ids: null // Замените на реальные ID изображений после реализации загрузки
+            },
+            {
+                // 3. Явное указание заголовков
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }
+        );
 
-            navigate(`/${tag}/thread/${response.data.id}`);
+            //navigate(`/${tag}/thread/${response.data.id}`);
         } catch (err) {
             setError(err.response?.data?.detail || err.message);
         } finally {
@@ -91,7 +100,11 @@ export default function PostForm() {
                         id="pA"
                     />
                     <progress value="10" max="100" className="postingProgress">10%</progress>
-                    <button type="submit">Post</button>      
+                    <button
+                        type="submit"
+                        disabled={isSubmitting || !text.trim()}>
+                            Post
+                    </button>      
                 </div>
             </form>
         </div>
