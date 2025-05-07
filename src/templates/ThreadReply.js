@@ -7,13 +7,16 @@ export default function ThreadReply({data}) {
             <div className="postCard postReply">
                 <div className="cardContent postContent">
                 <div className="postImages">
-                    <img src="/static/girl.jpg" alt="Post picture" />
+                    {data.image_ids.map(image =>(
+                        <img key={image.id} src={image.id} alt="Post picture" />
+                    ))}
                 </div>
                 <div className="postTextContent">
                     <div className="postMenu">
-                    <div className="postID cardNavigate">
-                        <a />
-                    </div>
+                        <div className="postID cardNavigate">
+                            <a />
+                            <p>#{data.id}</p>
+                        </div>
                     </div>
                     <div className="postTitle"></div>
                     <div className="postMessage">

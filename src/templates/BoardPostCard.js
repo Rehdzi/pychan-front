@@ -23,6 +23,12 @@ const BoardPostCard = ({ data }) => {
             ))}
           </div>
           <div className="postTextContent">
+            <div className="postMenu">
+              <div className="postID cardNavigate">
+                <a />
+                <p>#{data.id}</p>
+              </div>
+            </div>
             <div className="postTitle">
               <p>{data.title}</p>
             </div>

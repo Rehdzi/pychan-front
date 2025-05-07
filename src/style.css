@@ -515,6 +515,7 @@ a:visited {
     flex-direction: column;
     gap: 5px;
     margin-left: 9px;
+    width: 30%;
 }
 
 .functional {
