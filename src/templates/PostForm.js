@@ -40,6 +40,7 @@ export default function PostForm() {
             setError(err.response?.data?.detail || err.message);
         } finally {
             setIsSubmitting(false);
+            window.location.reload();
         }
     };
 
