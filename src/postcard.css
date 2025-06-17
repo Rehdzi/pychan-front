@@ -1,16 +1,18 @@
+@import "themes/basalt.css";
 /* Image handling styles */
-.postImages {
+/* .postImages {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-}
+} */
 
 .image-container {
   display: flex;
-  flex-direction: row;
+  width: fit-content;
+  /* flex-direction: row;
   align-items: center;
   max-width: 200px;
-  position: relative;
+  position: relative; */
 }
 
 .image-container::before {
@@ -37,16 +39,6 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-.post-thumbnail {
-  cursor: pointer;
-  max-width: 200px;
-  max-height: 200px;
-  border-radius: 4px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
-  object-fit: cover;
-  background-color: #f0f0f0;
 }
 
 .post-thumbnail:hover {
@@ -119,7 +111,7 @@
 }
 
 .modal-close:hover {
-  background: rgba(255, 0, 0, 0.7);
+  background: var(--red);
 }
 
 .postTextContent {

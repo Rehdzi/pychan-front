@@ -420,6 +420,10 @@ a:visited {
     text-align: center;
 }
 
+.cardNavigate > Link {
+    color: var(--subcolor);
+}
+
 .cardContent {
     display: flex;
     margin: 12px;
@@ -567,15 +571,80 @@ a:visited {
 }
 
 .postImages {
-    flex: 0 1 auto;
+    /* --grid-cols: 2; */
+    --grid-gap: 4px;
+    --grid-size: 8.5rem;
+    
+    width: var(--grid-size);
+    height: var(--grid-size);
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    gap: var(--grid-gap);
+    background-color: var(--main);
+    border-radius: calc(var(--radius) / 4);
+    overflow: hidden;
 }
 
-.postImages > * {
+.image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.post-thumbnail {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    width: 20vh;
-    height: 20vh;
-    border-radius: calc(var(--radius) / 4);
-    background-color: var(--less_darker);
+    border-radius: 0;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.post-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Adjust grid layout based on number of images */
+.postImages[data-count="1"] {
+    --grid-cols: 1;
+}
+
+.postImages[data-count="2"] {
+    --grid-cols: 2;
+    --grid-rows: 1;
+}
+
+.postImages[data-count="3"],
+.postImages[data-count="4"] {
+    --grid-cols: 2;
+    --grid-rows: 2;
+}
+
+.postImages[data-count="5"],
+.postImages[data-count="6"] {
+    --grid-cols: 3;
+    --grid-rows: 2;
+}
+
+.postImages[data-count="7"],
+.postImages[data-count="8"],
+.postImages[data-count="9"] {
+    --grid-cols: 3;
+    --grid-rows: 3;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .postImages {
+        --grid-size: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .postImages {
+        --grid-size: 150px;
+    }
 }
 
 .postTextContent {
@@ -744,6 +813,150 @@ textarea {
     font-weight: bold;
     cursor: pointer;
 }
+
+/* File upload styles */
+.file-drop-area {
+    border: 2px dashed var(--subcolor);
+    border-radius: 8px;
+    padding: var(--p);
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: none;
+  }
+  
+  .file-drop-area.dragging {
+    background-color: #e9f7fe;
+    border-color: #3498db;
+  }
+  
+  .file-drop-area p {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  /* .file-drop-area button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .file-drop-area button:hover {
+    background-color: #2980b9;
+  }
+  
+  .file-drop-area button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  } */
+  
+  .file-preview-container {
+    margin: 15px 0;
+  }
+  
+  .file-preview-container h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .file-preview-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 2px solid var(--subcolor);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .file-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: none;
+    border-bottom: 2px solid var(--subcolor);
+  }
+  
+  .file-item:last-child {
+    border-bottom: none;
+  }
+  
+  .file-name {
+    flex: 1;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .file-size {
+    color: #888;
+    font-size: 12px;
+    margin: 0 10px;
+  }
+  
+  .remove-file {
+    background: none;
+    border: none;
+    color: #ff5252;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+  }
+  
+  .remove-file:hover {
+    color: #ff0000;
+  }
+  
+  .upload-progress {
+    margin: 10px 0;
+  }
+  
+  .upload-progress label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .postingProgress {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .postingProgress::-webkit-progress-bar {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .postingProgress::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+  }
+  
+  .postingProgress::-moz-progress-bar {
+    background-color: #4caf50;
+    border-radius: 5px;
+  }
+  
+  .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border-left: 4px solid #ef5350;
+  }
+  
 
 /**/
 
